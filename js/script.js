@@ -50,9 +50,9 @@ tabsItems.forEach((tab, i) => {
 const stopBtn = document.querySelector(".stopwatch__btn"),
   stopWatchSec = document.querySelector(".stopwatch__seconds"),
   stopWatchMin = document.querySelector(".stopwatch__minutes"),
-  stopWatchHour = document.querySelector(".stopwatch__hours");
+  stopWatchHour = document.querySelector(".stopwatch__hours"),
+  tabsLink = document.querySelector('.tabsLink__span');
 
-stopBtn.innerHTML = "Start";
 let seconds2 = 0;
 let minutes2 = 0;
 let hours2 = 0;
@@ -61,13 +61,29 @@ let hours2 = 0;
 stopBtn.addEventListener("click", () => {
   if (stopBtn.innerHTML == "Start") {
     stopBtn.innerHTML = "Stop";
+    tabsLink.classList.add("active");
+    tabsLink.classList.remove("active_clear");
     countSec();
   } else if (stopBtn.innerHTML == "Stop") {
     stopBtn.innerHTML = "Clear";
+    tabsLink.classList.remove("active");
+    tabsLink.classList.add("active_clear");
   } else if (stopBtn.innerHTML == "Clear") {
     stopBtn.innerHTML = "Start";
+
+    tabsLink.classList.remove("active");
+    tabsLink.classList.remove("active_clear");
+
+    stopWatchHour.innerHTML = 0;
+    stopWatchMin.innerHTML = 0;
+    stopWatchSec.innerHTML = 0;
+
+    seconds2 = 0;
+    minutes2 = 0;
+    hours2 = 0;
   }
 });
+
 
 function countSec() {
   if (stopBtn.innerHTML !== "Stop") {
