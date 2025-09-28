@@ -86,23 +86,23 @@ stopBtn.addEventListener("click", () => {
 
 
 function countSec() {
-  if (stopBtn.innerHTML !== "Stop") {
-    return
-  }
-  if (seconds2 == 60) {
-    seconds2 = 0;
-    minutes2++;
-    stopWatchMin.innerHTML = minutes2;
-  }
-  if (minutes2 == 60) {
-    minutes2 = 0;
-    hours2++
-    stopWatchHour.innerHTML = hours2;
-  }
-  stopWatchSec.innerHTML = seconds2;
-  seconds2++;
+  if (stopBtn.innerHTML === "Stop") {
+    if (seconds2 == 60) {
+      seconds2 = 0;
+      minutes2++;
+      stopWatchMin.innerHTML = minutes2;
+    }
+    if (minutes2 == 60) {
+      minutes2 = 0;
+      hours2++;
+      stopWatchHour.innerHTML = hours2;
+    }
 
-  setTimeout(() => {
-    countSec();
-  }, 1000);
+    stopWatchSec.innerHTML = seconds2;
+    seconds2++;
+
+    setTimeout(() => {
+      countSec();
+    }, 1000);
+  }
 }
